@@ -1,0 +1,22 @@
+﻿@page "/counter"
+
+<h1>Counter App</h1>
+
+Count: <span data-test="count-value">@currentCount</span>
+       <div class="buttons">
+           <button data-test="increase-btn" class="btn btn-primary" type="button" @onclick="IncrementCount">Increase</button>
+           <button data-test="decrease-btn" class="btn btn-danger" type="button" @onclick="DecrementCount">Decrease</button>
+       </div>
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    private void DecrementCount()
+    {
+        currentCount--;
+    }
+}
