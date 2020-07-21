@@ -34,20 +34,6 @@ jobs:
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_823404334b114e42b452890c1c808229 }}
         package: ${{env.DOTNET_ROOT}}/blazor 
         
-  build-and-deploy-api:
-    runs-on: windows-latest
-
-    steps:
-    - uses: actions/checkout@master
-
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.102'
-
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
-
     - name: dotnet publish
       run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/backend ./Backend/Backend.csproj
 
@@ -58,4 +44,3 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_67543ca28e6c4346a037906acd9e489f }}
         package: ${{env.DOTNET_ROOT}}/backend
-
