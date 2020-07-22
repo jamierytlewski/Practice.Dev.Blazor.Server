@@ -5,12 +5,12 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PracticeDevPasswordController : ControllerBase
+    public class ValidateController : ControllerBase
     {
         [HttpPost]
         public ValidationPasswordResult Post(PasswordValues password)
         {
-            var regex = Regex.Match(password.Password, @"^[^\s](?=.{5,}$)(?=.*[!@#$])(?=.*\w).*[^\s]$");
+            var regex = Regex.Match(password.Password, @"^[^\s](?=.{4,}$)(?=.*[!@#$]).*[^\s]$");
             return new ValidationPasswordResult
             {
                 IsValid = regex.Success
